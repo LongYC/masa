@@ -1,9 +1,19 @@
+---
+const now = new Date();
+const nowString = now.toString();
+const nowUtc = now.toUTCString();
+---
+
 <div id="container">
 	<main>
 		<section id="hero">
 			<h1>
 				Masa
 			</h1>
+			<p>Your current time: {nowString}</p>
+			<p>In UTC: {nowUtc}</p>
+			<p>PST (without daylight saving, NOV - MAR) is UTC-8.</p>
+			<p>PDT (with daylight saving MAR - NOV) is UTC-7.</p>
 		</section>
 	</main>
 </div>
