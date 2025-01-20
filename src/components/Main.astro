@@ -1,21 +1,31 @@
 ---
-const now = new Date();
-const nowString = now.toString();
-const nowUtc = now.toUTCString();
 ---
 
 <div id="container">
 	<main>
 		<section id="hero">
-			<h1>
-				Masa
-			</h1>
-			<p>Your current time: {nowString}</p>
-			<p>In UTC: {nowUtc}</p>
-			<p>PST (without daylight saving, NOV - MAR) is UTC-8.</p>
-			<p>PDT (with daylight saving MAR - NOV) is UTC-7.</p>
+			<h1>Masa</h1>
+			<p>Your current time: <span id="local" class="datetime"></span></p>
+			<p>In UTC: <span id="utc" class="datetime"></span></p>
+			<h3>Pacific Time (PT):</h3>
+			<p>Pacific Standard Time (PST, no daylight saving, early NOV - mid MAR) is UTC-8.</p>
+			<p>Pacific Daylight Time (PDT, with daylight saving, mid MAR - early NOV) is UTC-7.</p>
 		</section>
 	</main>
+	<script>
+		const updateTime = () => {
+			const now = new Date();
+			const local = document.getElementById('local');
+			if (local) {
+				local.textContent = now.toString();
+			}
+			const utc = document.getElementById('utc');
+			if (utc) {
+				utc.textContent = now.toUTCString();
+			}
+		};
+		setInterval(updateTime, 1000);
+  </script>
 </div>
 
 <style>
@@ -38,9 +48,8 @@ const nowUtc = now.toUTCString();
 		padding: 16px;
 	}
 
-	h1 {
-		font-size: 22px;
-		margin-top: 0.25em;
+	.datetime {
+		font-weight: bold;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -52,10 +61,6 @@ const nowUtc = now.toUTCString();
 		#hero {
 			display: block;
 			padding-top: 10%;
-		}
-
-		h1 {
-			line-height: 1.5;
 		}
 	}
 </style>
