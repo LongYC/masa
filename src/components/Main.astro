@@ -4,35 +4,33 @@
 <div id="container">
 	<main>
 		<section id="hero">
-			<h1>Masa</h1>
-			<p>Your current time: <span id="local" class="datetime"></span></p>
-			<p>UTC: <span id="utc" class="datetime"></span></p>
-			<h3><a href="https://en.wikipedia.org/wiki/Central_European_Time" rel="noreferrer">Central Europe Time (CET)</a></h3>
-			<dl>
-				<dt>Central Europe Time (CET)</dt><dd>UTC+1, no daylight saving.</dd>
-				<dt>Central European Summer Time (CEST)</dt><dd>UTC+2, last Sunday in MAR - last Sunday in OCT.</dd>
-			</dl>
-			<h3><a href="https://en.wikipedia.org/wiki/Pacific_Time_Zone" rel="noreferrer">Pacific Time (PT)</a></h3>
-			<dl>
-				<dt>Pacific Standard Time (PST)</dt><dd>UTC-8, no daylight saving.</dd>
-				<dt>Pacific Daylight Time (PDT)</dt><dd>UTC-7, mid MAR - early NOV.</dd>
+			<h1><img src="../../public/favicon.svg" class="favicon"/>Masa</h1>
+			<p>Your current time: <span id="local-time" class="datetime"></span></p>
+			<p>UTC: <span id="utc-time" class="datetime"></span></p>
+			<dl class="timezones">
+				<div class="timezone">
+					<dt>
+						<a href="https://en.wikipedia.org/wiki/Pacific_Time_Zone" rel="noreferrer">PT</a>
+					</dt>
+					<dd>
+						<strong>Pacific Time</strong> or Pacific Standard Time (PST) is UTC-8. With daylight saving from mid MAR to early NOV, it is Pacific Daylight Time (PDT, UTC-7).
+					</dd>
+				</div>
+				<div class="timezone">
+					<dt>
+						<a href="https://en.wikipedia.org/wiki/Central_European_Time" rel="noreferrer">CET</a>
+					</dt>
+					<dd>
+						<strong>Central Europe Time</strong> is UTC+1. With daylight saving from last Sunday in MAR to last Sunday in OCT, it is Central European Summer Time (CEST, UTC+2).
+					</dd>
+				</div>
 			</dl>
 		</section>
 	</main>
 	<script>
-		const updateTime = () => {
-			const now = new Date();
-			const local = document.getElementById('local');
-			if (local) {
-				local.textContent = now.toString();
-			}
-			const utc = document.getElementById('utc');
-			if (utc) {
-				utc.textContent = now.toUTCString();
-			}
-		};
-		setInterval(updateTime, 1000);
-  </script>
+		import { updateTime } from "../scripts/update-time";
+		setInterval(updateTime('local-time', 'utc-time'), 1000);
+	</script>
 </div>
 
 <style>
@@ -47,6 +45,13 @@
 		justify-content: center;
 	}
 
+	.favicon {
+		height: 1em;
+		width: auto;
+		margin-right: 0.1em;
+		margin-bottom: -0.1em;
+	}
+
 	#hero {
 		display: flex;
 		align-items: start;
@@ -57,6 +62,29 @@
 
 	.datetime {
 		font-weight: bold;
+	}
+
+	.timezones {
+		display: flex;
+		max-width: 1050px;
+		gap: 10px;
+		flex-wrap: wrap;
+
+		.timezone {
+			background-color: white;
+			max-width: 350px;
+			padding: 16px;
+			border-radius: 8px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+			dt {
+				font-weight: 700;
+			}
+
+			dd {
+				margin: 10px 0 0;
+			}
+		}
 	}
 
 	@media screen and (max-width: 768px) {
