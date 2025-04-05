@@ -1,10 +1,12 @@
 ---
+const isDevelopmentMode = import.meta.env.MODE;
+const faviconPath = isDevelopmentMode === 'development' ? '/favicon.svg' : import.meta.env.FAVICON_PATH;
 ---
 
 <div id="container">
 	<main>
 		<section id="hero">
-			<h1><img src="../../public/favicon.svg" class="favicon"/>Masa</h1>
+			<h1><img src={faviconPath} alt="" class="favicon" />Masa</h1>
 			<p>Your current time: <span id="local-time" class="datetime"></span></p>
 			<p>UTC: <span id="utc-time" class="datetime"></span></p>
 			<dl class="timezones">
@@ -48,7 +50,7 @@
 	.favicon {
 		height: 1em;
 		width: auto;
-		margin-right: 0.1em;
+		margin-right: 0.2em;
 		margin-bottom: -0.1em;
 	}
 
