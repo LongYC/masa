@@ -1,6 +1,5 @@
 ---
-const isDevelopmentMode = import.meta.env.MODE;
-const faviconPath = isDevelopmentMode === 'development' ? '/favicon.svg' : import.meta.env.FAVICON_PATH;
+const faviconPath = import.meta.env.FAVICON_PATH;
 ---
 
 <div id="container">
