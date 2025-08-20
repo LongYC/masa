@@ -6,8 +6,8 @@ const faviconPath = import.meta.env.FAVICON_PATH;
 	<main>
 		<section id="hero">
 			<h1><img src={faviconPath} alt="" class="favicon" />Masa</h1>
-			<p>Your current time: <span id="local-time" class="datetime"></span></p>
-			<p>UTC: <span id="utc-time" class="datetime"></span></p>
+			<p>Your current time: <span id="local-time" class="datetime" aria-live="polite"></span></p>
+			<p>UTC: <span id="utc-time" class="datetime" aria-live="polite"></span></p>
 			<dl class="timezones">
 				<div class="timezone">
 					<dt>
