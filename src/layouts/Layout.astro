@@ -1,4 +1,5 @@
 ---
+const faviconPath = import.meta.env.FAVICON_PATH;
 const siteTitle = "Masa";
 const siteDescription = "Masa – it shows time.";
 const siteUrl = "https://longyc.com/masa/";
@@ -8,7 +9,7 @@ const siteUrl = "https://longyc.com/masa/";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={faviconPath} />
 		<title>{siteTitle}</title>
 		<meta name="description" content={siteDescription} />
 		<meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
