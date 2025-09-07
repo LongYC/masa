@@ -1,11 +1,10 @@
-export const updateTime = (localTimeElementId: string, utcTimeElementId: string) => () => {
-  const now = new Date();
+export const updateTime = (date: Date, localTimeElementId: string, utcTimeElementId: string) => () => {
   const local = document.getElementById(localTimeElementId);
   if (local) {
-    local.textContent = now.toString();
+    local.textContent = date.toString();
   }
   const utc = document.getElementById(utcTimeElementId);
   if (utc) {
-    utc.textContent = now.toUTCString();
+    utc.textContent = date.toUTCString();
   }
 };

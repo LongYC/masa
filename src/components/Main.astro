@@ -6,8 +6,10 @@ const faviconPath = import.meta.env.FAVICON_PATH;
 	<main>
 		<section id="hero">
 			<h1><img src={faviconPath} alt="" class="favicon" />Masa</h1>
-			<p>Your current time: <span id="local-time" class="datetime" aria-live="polite"></span></p>
-			<p>UTC: <span id="utc-time" class="datetime" aria-live="polite"></span></p>
+			<p>UTC time: <span id="utc-time" class="datetime" aria-live="polite"></span></p>
+			<p>
+				Your time zone is <span id="local-timezone"></span>: <span id="local-time" class="datetime" aria-live="polite"></span>
+			</p>
 			<dl class="timezones">
 				<div class="timezone">
 					<dt>
@@ -30,7 +32,17 @@ const faviconPath = import.meta.env.FAVICON_PATH;
 	</main>
 	<script>
 		import { updateTime } from "../scripts/update-time";
-		setInterval(updateTime('local-time', 'utc-time'), 1000);
+
+		const now = new Date();
+		setInterval(updateTime(now, 'local-time', 'utc-time'), 1000);
+		document.addEventListener("DOMContentLoaded", () => {
+			const timeZoneElement = document.getElementById("local-timezone");
+			if (timeZoneElement) {
+				const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+				const timeZoneAbbreviation: string = now.toLocaleTimeString('en-us', { timeZoneName: 'short', timeZone }).split(' ').pop() ?? '';
+				timeZoneElement.textContent = timeZoneAbbreviation;
+			}
+		});
 	</script>
 </div>
 
@@ -61,8 +73,12 @@ const faviconPath = import.meta.env.FAVICON_PATH;
 		padding: 16px;
 	}
 
-	.datetime {
+	#local-timezone {
 		font-weight: bold;
+	}
+
+	.datetime {
+		font-style: italic;
 	}
 
 	.timezones {
