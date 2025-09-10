@@ -31,16 +31,14 @@ const faviconPath = import.meta.env.FAVICON_PATH;
 		</section>
 	</main>
 	<script>
+		import { getTimeZoneAbbreviation } from "../scripts/get-time-zone-abbreviation";
 		import { updateTime } from "../scripts/update-time";
 
-		const now = new Date();
-		setInterval(updateTime(now, 'local-time', 'utc-time'), 1000);
+		setInterval(updateTime('local-time', 'utc-time'), 1000);
 		document.addEventListener("DOMContentLoaded", () => {
 			const timeZoneElement = document.getElementById("local-timezone");
 			if (timeZoneElement) {
-				const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-				const timeZoneAbbreviation: string = now.toLocaleTimeString('en-us', { timeZoneName: 'short', timeZone }).split(' ').pop() ?? '';
-				timeZoneElement.textContent = timeZoneAbbreviation;
+				timeZoneElement.textContent = getTimeZoneAbbreviation(new Date());
 			}
 		});
 	</script>
