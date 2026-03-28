@@ -7,6 +7,10 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   base: '/masa',
 
+  build: {
+    assets: 'assets'
+  },
+
   env: {
     schema: {
       FAVICON_PATH: envField.string({ context: 'client', access: 'public' })
