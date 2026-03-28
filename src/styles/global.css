@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: #fac116;
+  }
+}

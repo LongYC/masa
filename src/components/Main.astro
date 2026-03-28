@@ -2,28 +2,30 @@
 const faviconPath = import.meta.env.FAVICON_PATH;
 ---
 
-<div id="container">
-	<main>
-		<section id="hero">
-			<h1><img src={faviconPath} alt="" class="favicon" />Masa</h1>
-			<p>UTC time: <span id="utc-time" class="datetime" aria-live="polite"></span></p>
-			<p>
-				Your time zone is <span id="local-timezone"></span>: <span id="local-time" class="datetime" aria-live="polite"></span>
+<div id="container" class="font-sans h-full flex flex-col md:block">
+	<main class="h-full flex justify-center">
+		<section id="hero" class="flex items-start flex-col justify-center p-4">
+			<h1 class="flex items-center mb-8 text-4xl font-bold">
+				<img src={faviconPath} alt="" class="h-8 w-auto mr-2 -mb-0.5" />Masa
+			</h1>
+			<p class="mb-6">UTC time: <span id="utc-time" class="italic" aria-live="polite"></span></p>
+			<p class="mb-6">
+				Your time zone is <span id="local-timezone" class="font-bold"></span>: <span id="local-time" class="italic" aria-live="polite"></span>
 			</p>
-			<dl class="timezones">
-				<div class="timezone">
-					<dt>
+			<dl class="flex max-w-[1050px] gap-2.5 flex-wrap">
+				<div class="bg-white dark:bg-gray-700 max-w-[350px] p-4 rounded-lg shadow-md dark:shadow-white/10">
+					<dt class="font-bold">
 						<a href="https://en.wikipedia.org/wiki/Pacific_Time_Zone" rel="noreferrer">PT</a>
 					</dt>
-					<dd>
+					<dd class="mt-2.5 ml-0">
 						<strong>Pacific Time</strong> or Pacific Standard Time (PST) is UTC-8. With daylight saving from mid MAR to early NOV, it is Pacific Daylight Time (PDT, UTC-7).
 					</dd>
 				</div>
-				<div class="timezone">
-					<dt>
+				<div class="bg-white dark:bg-gray-700 max-w-[350px] p-4 rounded-lg shadow-md dark:shadow-white/10">
+					<dt class="font-bold">
 						<a href="https://en.wikipedia.org/wiki/Central_European_Time" rel="noreferrer">CET</a>
 					</dt>
-					<dd>
+					<dd class="mt-2.5 ml-0">
 						<strong>Central Europe Time</strong> is UTC+1. With daylight saving from last Sunday in MAR to last Sunday in OCT, it is Central European Summer Time (CEST, UTC+2).
 					</dd>
 				</div>
@@ -43,83 +45,3 @@ const faviconPath = import.meta.env.FAVICON_PATH;
 		});
 	</script>
 </div>
-
-<style>
-	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
-	}
-
-	main {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-	}
-
-	.favicon {
-		height: 1em;
-		width: auto;
-		margin-right: 0.2em;
-		margin-bottom: -0.1em;
-	}
-
-	#hero {
-		display: flex;
-		align-items: start;
-		flex-direction: column;
-		justify-content: center;
-		padding: 16px;
-	}
-
-	#local-timezone {
-		font-weight: bold;
-	}
-
-	.datetime {
-		font-style: italic;
-	}
-
-	.timezones {
-		display: flex;
-		max-width: 1050px;
-		gap: 10px;
-		flex-wrap: wrap;
-
-		.timezone {
-			background-color: white;
-			max-width: 350px;
-			padding: 16px;
-			border-radius: 8px;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-			dt {
-				font-weight: 700;
-			}
-
-			dd {
-				margin: 10px 0 0;
-			}
-		}
-	}
-
-	@media (prefers-color-scheme: dark) {
-		.timezones {
-			.timezone {
-					background-color: #2c2c2c;
-					box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-			}
-		}
-  }
-
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		#hero {
-			display: block;
-			padding-top: 10%;
-		}
-	}
-</style>

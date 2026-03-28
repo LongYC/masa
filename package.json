@@ -11,7 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.5"
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^5.13.5",
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
