@@ -12,8 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/compiler-rs": "^0.1.7",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^5.13.5",
+    "astro": "^6.1.8",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {

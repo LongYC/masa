@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/',
+  base: '/masa',
 
   build: {
     assets: 'assets'
@@ -15,6 +15,10 @@ export default defineConfig({
     schema: {
       FAVICON_PATH: envField.string({ context: 'client', access: 'public' })
     }
+  },
+
+  experimental: {
+    rustCompiler: true
   },
 
   vite: {
