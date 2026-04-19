@@ -4,16 +4,8 @@
 
 Built with [Astro](https://astro.build) framework.
 
-## Developement with Podman / Docker
+## Development with local Node.js
 
-1. Build the image:
-
-```bash
-podman build -t masa-dev .
-```
-
-2. Run the container (`CHOKIDAR_USEPOLLING` for non-native filesystem, e.g. macOS & Windows):
-
-```bash
-podman run --rm -it -p 4321:4321 -v "$(pwd):/app" -v /app/node_modules -e CHOKIDAR_USEPOLLING=true masa-dev
-```
+1. `$ nvm use` to switch to the correct Node.js version.
+2. `$ pnpm install` to install dependencies.
+3. `$ pnpm dev` to start the development server.
